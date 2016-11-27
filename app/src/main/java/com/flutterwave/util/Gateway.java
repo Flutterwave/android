@@ -12,6 +12,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ import java.util.logging.Logger;
 public class Gateway {
     private static final Logger logger = Logger.getLogger(Gateway.class.getName());
 
-    public static MVVAResponse sendMCD(MVVARequest request, String merchantId, String baseUrl) {
+    public static MVVAResponse sendMCD(MVVARequest request, String merchantId, String baseUrl) throws JSONException {
         String url = baseUrl.concat("/pwc/rest/card/mvva/pay");
         JSONObject requestJSON = new JSONObject();
         requestJSON.putOpt("amount", request.getAmount());
@@ -44,7 +45,7 @@ public class Gateway {
         return response;
     }
 
-    public static MVVAResponse sendMT(MVVARequest request, String merchantId, String baseUrl) {
+    public static MVVAResponse sendMT(MVVARequest request, String merchantId, String baseUrl) throws JSONException {
         String url = baseUrl.concat("/pwc/rest/card/mvva/pay");
         JSONObject requestJSON = new JSONObject();
         requestJSON.putOpt("amount", request.getAmount());
@@ -61,7 +62,7 @@ public class Gateway {
         return response;
     }
 
-    public static MVVAResponse sendVT(MVVARequest request, String merchantId, String baseUrl) {
+    public static MVVAResponse sendVT(MVVARequest request, String merchantId, String baseUrl) throws JSONException {
         String url = baseUrl.concat("/pwc/rest/card/mvva/pay");
         JSONObject requestJSON = new JSONObject();
         requestJSON.putOpt("otp", request.getOtp());
@@ -75,7 +76,7 @@ public class Gateway {
         return response;
     }
 
-    public static AccountResponse sendAccountInitiate(AccountRequest request, String merchantId, String baseUrl) {
+    public static AccountResponse sendAccountInitiate(AccountRequest request, String merchantId, String baseUrl) throws JSONException {
         String url = baseUrl.concat("/pwc/rest/recurrent/account");
         JSONObject requestJSON = new JSONObject();
         requestJSON.putOpt("accountNumber", request.getAccountNumber());
@@ -86,7 +87,7 @@ public class Gateway {
         return response;
     }
 
-    public static AccountResponse sendAccountValidate(AccountRequest request, String merchantId, String baseUrl) {
+    public static AccountResponse sendAccountValidate(AccountRequest request, String merchantId, String baseUrl) throws JSONException {
         String url = baseUrl.concat("/pwc/rest/recurrent/account/validate");
         JSONObject requestJSON = new JSONObject();
         requestJSON.putOpt("accountNumber", request.getAccountNumber());
@@ -101,7 +102,7 @@ public class Gateway {
         return response;
     }
 
-    public static AccountResponse sendAccountCharge(AccountRequest request, String merchantId, String baseUrl) {
+    public static AccountResponse sendAccountCharge(AccountRequest request, String merchantId, String baseUrl) throws JSONException {
         String url = baseUrl.concat("/pwc/rest/recurrent/account/charge");
         JSONObject requestJSON = new JSONObject();
         requestJSON.putOpt("accountToken", request.getAccountNumber());

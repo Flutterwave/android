@@ -6,13 +6,15 @@ import com.flutterwave.exceptions.InvalidRequestObjectException;
 import com.flutterwave.requests.AccountRequest;
 import com.flutterwave.response.AccountResponse;
 
+import org.json.JSONException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GetPaidAccountsExample {
     private static final Logger logger = Logger.getLogger(GetPaidAccountsExample.class.getName());
 
-    public GetPaidAccountsExample() {
+    public GetPaidAccountsExample() throws JSONException {
         AccountRequest accountRequest = new AccountRequest();
         accountRequest.setAccountNumber("0690000000");
         accountRequest.setBillingAmount("1000.00");
@@ -30,7 +32,7 @@ public class GetPaidAccountsExample {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JSONException {
         new GetPaidAccountsExample();
     }
 }

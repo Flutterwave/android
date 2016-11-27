@@ -2,6 +2,8 @@ package com.flutterwave.util;
 
 import com.flutterwave.response.AccountResponse;
 import com.flutterwave.response.MVVAResponse;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -10,7 +12,7 @@ import org.json.JSONObject;
  */
 public class Util {
 
-    static MVVAResponse makeMVVAResponse(JSONObject details) {
+    static MVVAResponse makeMVVAResponse(JSONObject details) throws JSONException {
         MVVAResponse response = new MVVAResponse();
         JSONObject data = details.getJSONObject("data");
         response.setResponseCode(data.optString("responsecode"));
@@ -22,7 +24,7 @@ public class Util {
         return response;
     }
 
-    static AccountResponse makeAccountResponse(JSONObject details) {
+    static AccountResponse makeAccountResponse(JSONObject details) throws JSONException {
         AccountResponse response = new AccountResponse();
         JSONObject data = details.getJSONObject("data");
         response.setResponseCode(data.optString("responsecode"));

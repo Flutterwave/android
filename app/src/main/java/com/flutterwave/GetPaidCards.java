@@ -8,6 +8,8 @@ import com.flutterwave.util.Gateway;
 import com.flutterwave.util.RequestHardner;
 import com.flutterwave.util.validators.MVVAValidator;
 
+import org.json.JSONException;
+
 public class GetPaidCards {
     private String apiKey;
     private String merchantId;
@@ -24,7 +26,7 @@ public class GetPaidCards {
         hardner = new RequestHardner(apiKey);
     }
 
-    public MVVAResponse payWithCardDetails(MVVARequest request) throws InvalidRequestObjectException {
+    public MVVAResponse payWithCardDetails(MVVARequest request) throws InvalidRequestObjectException, JSONException {
         MVVAResponse response;
         boolean valid = MVVAValidator.validate(request);
         if (!valid) {
@@ -36,7 +38,7 @@ public class GetPaidCards {
         }
     }
 
-    public MVVAResponse payWithToken(MVVARequest request) throws InvalidRequestObjectException {
+    public MVVAResponse payWithToken(MVVARequest request) throws InvalidRequestObjectException, JSONException {
         MVVAResponse response;
         boolean valid = MVVAValidator.validate(request);
         if (!valid) {
@@ -48,7 +50,7 @@ public class GetPaidCards {
         }
     }
 
-    public MVVAResponse validate(MVVARequest request) throws InvalidRequestObjectException {
+    public MVVAResponse validate(MVVARequest request) throws InvalidRequestObjectException, JSONException {
         MVVAResponse response;
         boolean valid = MVVAValidator.validate(request);
         if (!valid) {

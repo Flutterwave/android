@@ -6,13 +6,15 @@ import com.flutterwave.exceptions.InvalidRequestObjectException;
 import com.flutterwave.requests.MVVARequest;
 import com.flutterwave.response.MVVAResponse;
 
+import org.json.JSONException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GetPaidCardsExample {
     private static final Logger LOG = Logger.getLogger(GetPaidCardsExample.class.getName());
 
-    public GetPaidCardsExample() {
+    public GetPaidCardsExample() throws JSONException {
         MVVARequest request = new MVVARequest();
         request.setAmount("1000.00");
         request.setCurrency("NGN");
@@ -36,7 +38,7 @@ public class GetPaidCardsExample {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JSONException {
         new GetPaidCardsExample();
     }
 }

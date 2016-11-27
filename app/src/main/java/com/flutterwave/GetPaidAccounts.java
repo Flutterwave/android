@@ -8,6 +8,8 @@ import com.flutterwave.util.Gateway;
 import com.flutterwave.util.RequestHardner;
 import com.flutterwave.util.validators.AccountValidator;
 
+import org.json.JSONException;
+
 public class GetPaidAccounts {
 
     private String apiKey;
@@ -25,7 +27,7 @@ public class GetPaidAccounts {
         this.hardner = new RequestHardner(apiKey);
     }
 
-    public AccountResponse initiate(AccountRequest request) throws InvalidRequestObjectException {
+    public AccountResponse initiate(AccountRequest request) throws InvalidRequestObjectException, JSONException {
         {
             AccountResponse response;
             boolean valid = AccountValidator.validate(request);
@@ -40,7 +42,7 @@ public class GetPaidAccounts {
         }
     }
 
-    public AccountResponse validate(AccountRequest request) throws InvalidRequestObjectException {
+    public AccountResponse validate(AccountRequest request) throws InvalidRequestObjectException, JSONException {
         {
             AccountResponse response;
             boolean valid = AccountValidator.validate(request);
@@ -55,7 +57,7 @@ public class GetPaidAccounts {
         }
     }
 
-    public AccountResponse charge(AccountRequest request) throws InvalidRequestObjectException {
+    public AccountResponse charge(AccountRequest request) throws InvalidRequestObjectException, JSONException {
         {
             AccountResponse response;
             boolean valid = AccountValidator.validate(request);

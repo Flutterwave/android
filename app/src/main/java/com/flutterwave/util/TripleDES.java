@@ -41,7 +41,7 @@ public class TripleDES {
 
             byte[] plainTextBytes = unencryptedString.getBytes("utf-8");
             byte[] buf = cipher.doFinal(plainTextBytes);
-            String base64EncryptedString = Base64.encodeBase64String(buf);
+            String base64EncryptedString = new String(Base64.encodeBase64(buf));
 
             return base64EncryptedString;
         } catch (Exception e) {
